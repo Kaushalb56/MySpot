@@ -1,0 +1,471 @@
+<!-- register.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Register - MySpot</title>
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            position: relative;
+            right: -450px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .sign-up-btn {
+            background-color: #e63946;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .hero {
+            display: flex;
+            height: 100vh;
+            margin-top: 0;
+        }
+
+        .hero-left {
+            flex: 1;
+            background-image: url(images/MySpot_bg.jpg);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            color: white;
+            padding: 100px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-left::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(74, 22, 22, 0.7);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 54px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 40px;
+        }
+
+        .feature-list {
+            margin-top: 60px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .feature-icon {
+            background-color: #e63946;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+        }
+
+        .feature-text {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .hero-right {
+            flex: 1;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container {
+            width: 100%;
+    max-width: 550px;
+    margin: 80px auto 0 auto; /* 👈 increased top margin */
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s ease-in-out;
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        .login-container p {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .login-options {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .login-option {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .login-option.active {
+            background-color: #e63946;
+            color: white;
+            transform: scale(1.1);
+            z-index: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+             opacity: 1;
+            transition: opacity 0.4s ease-in-out;
+        }
+        
+        .form-group.fade {
+          opacity: 0;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #e63946;
+        }
+
+        .form-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .forgot-password {
+            color: #e63946;
+            text-decoration: none;
+        }
+
+        .login-btn {
+            width: 100%;
+            background-color: #e63946;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 14px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .signup-link {
+            text-align: center;
+        }
+
+        .signup-link a {
+            color: #e63946;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .counter-badge {
+            background-color: #fff;
+            color: #e63946;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border: 2px solid #e63946;
+            position: absolute;
+            bottom: -10px;
+            left: -10px;
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                height: auto;
+            }
+            
+            .hero-left, .hero-right {
+                width: 100%;
+                padding: 50px 20px;
+            }
+            
+            .hero-left {
+                min-height: 70vh;
+            }
+            
+            .hero-content h1 {
+                font-size: 40px;
+            }
+            where sho
+            .login-container {
+                width: 90%;
+                margin: 40px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- REUSE NAVBAR -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/MySpot_ll.svg" alt="MySpot Logo" style="height: 39px; vertical-align: middle; margin-right: 10px;">MySpot</div>
+        <div class="nav-links">
+            <a href="#">How it works</a>
+            <a href="#">Partner with us</a>
+        </div>
+        <a href="index.html"><button class="sign-up-btn">Login</button></a>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-left">
+            <div class="hero-content">
+                <h1>Reserve Your Perfect Dining Experience</h1>
+                <p>Join thousands of diners who book their favorite restaurants with MySpot</p>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="feature-icon" style="position: relative;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <div class="feature-text">Instant table reservations at top restaurants</div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon" style="position: relative;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                                <line x1="3" y1="6" x2="21" y2="6"></line>
+                                <path d="M16 10a4 4 0 0 1-8 0"></path>
+                            </svg>
+                        </div>
+                        <div class="feature-text">Pre-order your meals for a seamless experience</div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon" style="position: relative;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                            
+                        </div>
+                        <div class="feature-text">Exclusive deals and special menu access</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right side: registration form -->
+        <div class="hero-right">
+            <div class="login-container">
+                <h2>Create Account</h2>
+                <div class="login-options">
+                    <div class="login-option active" id="register-customer">As Customer</div>
+                    <div class="login-option" id="register-restaurant">As Restaurant</div>
+                </div>
+
+                <form action="php/register.php" method="post" id="register-form">
+                    <input type="hidden" name="role" id="role" value="customer" />
+
+                    <!-- Common fields (visible for both) -->
+                    <div class="form-group" id="name-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" />
+                    </div>
+
+                    <div class="form-group" id="restaurant-name-group" style="display:none;">
+                        <label for="restaurant_name">Restaurant Name</label>
+                        <input type="text" id="restaurant_name" name="restaurant_name" placeholder="Enter restaurant name" />
+                    </div>
+
+                    <div class="form-group" id="email-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" />
+                    </div>
+                    
+                    <div class="form-group" id="restaurant-email-group" style="display:none;">
+                        <label for="restaurant_Email">Restaurant Email <Address></Address></label>
+                        <input type="email" id="restaurant_email" name="restaurant_email" placeholder="Enter restaurant Email Address" />
+                    </div>
+
+                    <div class="form-group" id = "phone-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="text" id="phone" name="phone" placeholder="Enter your phone number" />
+                    </div>
+                    
+                    <div class="form-group" id="restaurant-phone-group" style="display:none;">
+                        <label for="restaurant_phone_number">Restaurant Phone Number</label>
+                        <input type="text" id="restaurant_phone" name="restaurant_phone" placeholder="Enter restaurant Phone Number" />
+                    </div>
+
+                    <div class="form-group" id="address-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" name="address" placeholder="Enter your address" />
+                    </div>
+                    
+                    <div class="form-group" id="restaurant-address-group" style="display:none;">
+                        <label for="restaurant_address">Restaurant Address</Address></label>
+                        <input type="text" id="restaurant_address" name="restaurant_address" placeholder="Enter restaurant Address" />
+                    </div>
+
+                    <div class="form-group" id="name-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Create a password" />
+                    </div>
+                    
+                    
+
+                    <button type="submit" class="login-btn">Sign Up</button>
+
+                    <div class="signup-link">
+                        Already have an account? <a href="index.html">Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const customerBtn = document.getElementById("register-customer");
+            const restaurantBtn = document.getElementById("register-restaurant");
+            const roleInput = document.getElementById("role");
+            const nameGroup = document.getElementById("name-group");
+            const restaurantGroup = document.getElementById("restaurant-name-group");
+            const emailGroup = document.getElementById("email-group");
+            const restaurantemailGroup = document.getElementById("restaurant-email-group");
+            const phoneGroup = document.getElementById("phone-group");
+            const restaurantphoneGroup = document.getElementById("restaurant-phone-group");
+            const addressGroup = document.getElementById("address-group");
+            const restaurantaddressGroup = document.getElementById("restaurant-address-group");
+            customerBtn.addEventListener("click", function () {
+                customerBtn.classList.add("active");
+                restaurantBtn.classList.remove("active");
+                roleInput.value = "customer";
+                nameGroup.style.display = "block";
+                restaurantGroup.style.display = "none";
+                emailGroup.style.display = "block";
+                restaurantemailGroup.style.display = "none";
+                phoneGroup.style.display = "block";
+                restaurantphoneGroup.style.display = "none";
+                addressGroup.style.display = "block";
+                restaurantaddressGroup.style.display = "none";
+            });
+
+            restaurantBtn.addEventListener("click", function () {
+                restaurantBtn.classList.add("active");
+                customerBtn.classList.remove("active");
+                roleInput.value = "restaurant";
+                nameGroup.style.display = "none";
+                restaurantGroup.style.display = "block";
+                emailGroup.style.display = "none";
+                restaurantemailGroup.style.display = "block";
+                phoneGroup.style.display = "none";
+                restaurantphoneGroup.style.display = "block";
+                addressGroup.style.display = "none";
+                restaurantaddressGroup.style.display = "block";
+
+            });
+        });
+    </script>
+</body>
+</html>

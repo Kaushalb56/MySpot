@@ -1,0 +1,20 @@
+# 🛡️ Don't upload sensitive config
+config.php
+
+# 🧹 Ignore OS and editor junk
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.bak
+*.swp
+
+# 💻 Ignore IDE/editor folders
+.vscode/
+.idea/
+
+# ⚙️ If using Composer
+vendor/
+
+# 🔐 If using environment variables
+.env
