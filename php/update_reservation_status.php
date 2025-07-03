@@ -57,12 +57,12 @@ if (!empty($customer_email)) {
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'bishtk.l568@gmail.com'; // your Gmail
-        $mail->Password = 'exne sdua klgu xtoh'; // your Gmail app password
+        $mail->Username = 'your-email@gmail.com'; // your Gmail
+        $mail->Password = 'your app password'; // your Gmail app password
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
 
-        $mail->setFrom('bishtk.l568@gmail.com', $restaurant_name);
+        $mail->setFrom('your-emal@gmail.com', $restaurant_name);
         $mail->addAddress($customer_email, $customer_name);
 
         $mail->isHTML(true);
